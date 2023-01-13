@@ -29,6 +29,7 @@ async function getGoogleImage(cityName){
 			response.on("data", function(data) {
 				const city = JSON.parse(data)
 				let photoReference = city.candidates[0].photos[0].photo_reference;
+				console.log('Getting google Image URL.')
 				resolve(photoReference);
 			});
 		});
@@ -66,13 +67,13 @@ app.post("/searchWeather", function(req, res) {
 				weather.temperature = weatherData.main.temp
 				weather.description = weatherData.weather[0].description
 				weather.iconUrl = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
-				
+				console.log('Preparing to request google image.')
 				getGoogleImage(weather.city).then( googleImageUrl => {
 
 					weather.cityImage = googleImageUrl;
 					
 					weatherList.push(weather);
-
+					console.log('Sending render page.')
 					res.render("weather", {weathers: weatherList});
 				});
 		

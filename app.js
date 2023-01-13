@@ -79,7 +79,8 @@ app.post("/searchWeather", function(req, res) {
 			});
 
 		} else {
-			res.redirect('/');
+			res.send("<p>There was an error.</p>")
+			//res.redirect('/');
 		}
 	})
 

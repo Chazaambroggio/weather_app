@@ -28,6 +28,7 @@ async function getGoogleImage(cityName){
 		https.get(url, function(response) {
 			console.log('About to read response.')
 			response.on("data", function(data) {
+				console.log('About to Parse')
 				const city = JSON.parse(data)
 				console.log(city.candidates[0].place_id)
 				let photoReference = city.candidates[0].photos[0].photo_reference;
@@ -57,7 +58,7 @@ app.post("/searchWeather", function(req, res) {
 	};
 
 	const url = "https://api.openweathermap.org/data/2.5/weather?q=" + weather.city + "," + weather.countryCode + "&zip=" + weather.zipCode +"&units=" + unit + "&appid=" + apiKey
-	
+
 	https.get(url, function(response){
 
 		if (response.statusCode == 200) {

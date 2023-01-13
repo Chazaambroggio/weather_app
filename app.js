@@ -28,6 +28,7 @@ async function getGoogleImage(cityName){
 		https.get(url, function(response) {
 			response.on("data", function(data) {
 				const city = JSON.parse(data)
+				console.log(city.candidates[0].place_id)
 				let photoReference = city.candidates[0].photos[0].photo_reference;
 				console.log('Getting google Image URL.')
 				resolve(photoReference);

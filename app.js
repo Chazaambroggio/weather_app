@@ -24,15 +24,15 @@ async function getGoogleImage(cityName){
 	// Find Place search.
 	let photoReferencePromise = new Promise((resolve, reject) => {
 		const url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + cityName + "&inputtype=textquery&fields=name%2Cphotos%2Cplace_id&key=" + googleKey
-		console.log('Google URL: ');
+		
 		https.get(url, function(response) {
-			console.log('About to read response.')
+			
 			response.on("data", function(data) {
-				console.log('About to Parse')
+				
 				const city = JSON.parse(data)
-				console.log(city.candidates[0].place_id)
+				console.log(city.candidates[0])
 				let photoReference = city.candidates[0].photos[0].photo_reference;
-				console.log('Getting google Image URL.')
+				
 				resolve(photoReference);
 			});
 		});
@@ -74,15 +74,15 @@ app.post("/searchWeather", function(req, res) {
 					weather.cityImage = googleImageUrl;
 					
 					weatherList.push(weather);
-					console.log('Sending render page.')
+					
 					res.render("weather", {weathers: weatherList});
 				});
 		
 			});
 
 		} else {
-			res.send("<p>There was an error.</p>")
-			//res.redirect('/');
+			
+			res.redirect('/');
 		}
 	})
 

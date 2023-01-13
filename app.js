@@ -56,7 +56,6 @@ app.post("/searchWeather", function(req, res) {
 
 	const url = "https://api.openweathermap.org/data/2.5/weather?q=" + weather.city + "," + weather.countryCode + "&zip=" + weather.zipCode +"&units=" + unit + "&appid=" + apiKey
 	console.log(url)
-
 	https.get(url, function(response){
 
 		if (response.statusCode == 200) {

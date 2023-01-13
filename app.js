@@ -43,7 +43,6 @@ async function getGoogleImage(cityName){
 }
 
 
-
 app.post("/searchWeather", function(req, res) {
 	weatherList = [];
 	
@@ -68,7 +67,6 @@ app.post("/searchWeather", function(req, res) {
 				weather.temperature = weatherData.main.temp
 				weather.description = weatherData.weather[0].description
 				weather.iconUrl = "http://openweathermap.org/img/wn/" + weatherData.weather[0].icon + "@2x.png"
-				console.log('Preparing to request google image.')
 				getGoogleImage(weather.city).then( googleImageUrl => {
 
 					weather.cityImage = googleImageUrl;

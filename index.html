@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="styles.css" rel="stylesheet" >
+
+
+	<title>Weather App</title>
+	
+</head>
+<body>
+
+	<main>
+		<div class="container col-50">
+			
+			<div class="row">
+				<h1>Welcome to the Weather App</h1>
+			</div>
+
+			<div class="row">
+				<form action="/searchWeather" method="POST">
+					<p>City </p>
+					<input type="text" id="cityInput" name="cityNameInput" placeholder="Hickory" required>
+					
+					<p> Zip Code</p>
+					<input type="text" id="zipCodeInput" name="zipCodeInput" placeholder="28601">
+					
+					<p> Country Code</p>
+					<input type="text" id="countryCodeInput" name="countryCodeInput" placeholder="US">
+
+					<button type="submit">Search</button>
+				</form>
+			</div>
+
+		</div>	
+
+
+	</main>
+	
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="styles.css" rel="stylesheet" >
+
+
+	<title>Weather App</title>
+	
+</head>
+<body>
+
+	<main>
+		<div class="container col-40">
+			<h1>Search</h1>
+			<div class="row">
+				<form action="/searchWeather" method="POST">
+					<p>City </p>
+					<input type="text" id="cityInput" name="cityNameInput" placeholder="Hickory" required>
+						
+					<p> Zip Code</p>
+					<input type="text" id="zipCodeInput" name="zipCodeInput" placeholder="28601">
+						
+					<p> Country Code</p>
+					<input type="text" id="countryCodeInput" name="countryCodeInput" placeholder="US">
+
+					<button type="submit">Search</button>
+				</form>
+			</div>
+		</div>
+
+		<br>
+		<br>
+
+		<div class="col-60">
+			<div class="container-weatherList">	
+					<div class="city-container">
+						<div><label class="city-name"><%= weathers[0].city %></label></div>
+						<div><img src="<%= weathers[0].cityImage %>" class="city-image" > </img></div>
+						<div><img src="<%= weathers[0].iconUrl %>"></div>
+						<div><label class="description"><%= weathers[0].description %></label></div>
+						<div><label class="temp"><%= weathers[0].temperature %>°C</label></div>
+						</div>
+					<br>
+			</div>
+					
+		</div>
+		
+	</main>
+	
+
+
+</body>
+</html>

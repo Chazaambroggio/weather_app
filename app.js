@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extend:true}));
 
 // Allows express to know in which folder to look for things
-app.use(express.static(__dirname));
+app.use(express.static('public'));
 
 
 app.get("/", function(req, res) {
@@ -47,7 +47,7 @@ app.post("/searchWeather", function(req, res) {
 	
 	const unit = "metric";
 	const apiKey = process.env.OPEN_WEATHER_API_KEY;
-	
+
 	let weather = {
 		city: req.body.cityNameInput,
 		zipCode: req.body.zipCodeInput,

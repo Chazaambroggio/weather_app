@@ -21,16 +21,20 @@ app.get("/", function(req, res) {
 async function getGoogleImage(cityName){
 	
 	const googleKey = process.env.GOOGLE_API_KEY;
-	// Find Place search.
+
+	// Google API - Find Place search.
+	// To search img an photo reference is needed.
 	let photoReferencePromise = new Promise((resolve, reject) => {
 		const url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + cityName + "&inputtype=textquery&fields=name%2Cphotos%2Cplace_id&key=" + googleKey
 		
 		https.get(url, function(response) {
 			
+			// ERROR LINE.
 			response.on("data", function(data) {
 				
 				const city = JSON.parse(data)
 				console.log(city.candidates[0])
+				console.log("Hello World");
 				let photoReference = city.candidates[0].photos[0].photo_reference;
 				
 				resolve(photoReference);
